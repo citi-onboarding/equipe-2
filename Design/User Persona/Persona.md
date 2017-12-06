@@ -18,6 +18,7 @@
 
 <p><b> O que Lito busca? </b></p>
 <p> Conseguir um jeito prático e rápido de achar carros para alugar para ajudar a se locomover durante as viagens. </p>
+<p> Além de um serviço personalizado para estrangeiros, ou seja, que tenha uma comunicação facilitda (inglês) </p>
 
 
 
