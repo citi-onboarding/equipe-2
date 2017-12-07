@@ -27,8 +27,10 @@ def signUp (request):
 @login_required(login_url='core/login.html')
 def rentProfile (request):
     context = dict()
+    context["user"] = request.User
+    context["rents"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract')[:4]
     pass
 
-
+@login_required(login_url='core/login.html')
 def tenantProfile (request):
     pass
