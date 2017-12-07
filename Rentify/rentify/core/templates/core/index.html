@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Rentify {% endblock %}
+
+{% block content %} 
+    {% for car in cars %}
+	    <h3>Model: {{car.Model}}</h3>
+	    <h3>Price: {{car.Price}}</h3>
+	    <h3>Year: {{car.Year}}</h3>
+    {% endfor %}
+{% endblock %}
