@@ -21,5 +21,5 @@ from core.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^about/', about),
+    url(r'^about/',admin.site.url),
 ]
