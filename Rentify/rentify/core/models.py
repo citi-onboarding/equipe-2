@@ -25,3 +25,17 @@ class Car(models.Model):
     def __str__(self):
 		return self.Model
 
+class Contract(models.Model):
+    ID = models.AutoField(primary_key=True)
+    CarID = models.ForeignKey (
+        'Car',
+        on_delete=models.CASCADE,
+    )
+    UserID = models.ForeignKey (
+        'User',
+        on_delete=models.CASCADE,
+    )
+    DateContract = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.DateContract
