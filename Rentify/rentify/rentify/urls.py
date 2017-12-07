@@ -20,7 +20,8 @@ from core.views import *
 
 
 urlpatterns = [
+    url('', home),
     url(r'^admin/', admin.site.urls),
     url(r'^about/', about),
-    url('', home),
+    #url(r'^rentProfile/(?P<username>[a-zA-Z0-9]+)$', rentProfile, name=rentProfile),
 ]

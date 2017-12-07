@@ -28,8 +28,13 @@ def signUp (request):
 def rentProfile (request):
     context = dict()
     context["user"] = request.User
-    context["rents"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract')[:4]
-    pass
+    
+    if Contract.objects.all() is not None:
+        context["rents"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract')[:4]
+        context["currentRent"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract').filter(Active=True).first()
+    
+    return render(resquest, 'core/rent-profile.html', context)
+
 
 @login_required(login_url='core/login.html')
 def tenantProfile (request):
