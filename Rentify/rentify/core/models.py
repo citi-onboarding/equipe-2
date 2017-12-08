@@ -23,7 +23,7 @@ class Car(models.Model):
     Availability = models.BooleanField()
     
     def __str__(self):
-		return self.Model
+        return self.Model
 
 class Contract(models.Model):
     ID = models.AutoField(primary_key=True)
