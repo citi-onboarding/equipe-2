@@ -9,21 +9,45 @@
         <meta name="reply-to" content="joaovitortlyra@gmail.com">
         <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Quicksand:300,400,500,700" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
         <title> {% block title %}  {% endblock %} </title>
     </head>
         
     <body>
-        <div id="navbar">
-            <div> Rentify </div>
+        <div class="navbar"> 
+            <div class="logo"> Rentify </div>
             <ul class="navLinks">
                 <li><a href="">Our Cars</a></li>
                 <li><a href="">About</a></li>
-                <li><a href="">Login</a></li>
-                <li><a href="">Logout</a></li>
+                <li><a href="">Sign in</a></li>
+                <li><a href="">Sign up</a></li>
             </ul>
         </div>
+        
         {% block content %}  {% endblock %}
+        
+        <footer>
+            <div class="footerLogo">
+                Rentify
+            </div>
+            <div class="footerInfo">
+                <div class="socialNetworks">
+                    <a target="_blank" href="https://www.facebook.com/"><img class="iconMedia" src="{% static 'icons/facebook-logo.svg' %}"></img></a>
+                    <a target="_blank" href="https://www.instagram.com/?hl=pt-br"><img class="iconMedia" src="{% static 'icons/instagram-logo.svg' %}"></img></a>
+                </div>
+                <div class="contact">
+                    contact@rentify.com
+                    <img class="icon" src="{% static 'icons/close-envelope.svg' %}"></img>
+                    <div class="line"></div>
+                    <img class="icon" src="{% static 'icons/phone-receiver.svg' %}"></img>
+                    (81)3093-1280
+                </div>
+                <div class="adress">
+                    <img class="icon" src="{% static 'icons/map-pin.svg' %}"></img>
+                    Rua Jornalista Hercílio celso, 822 - Boa Viagem
+                </div>
+            </div>
+        </footer>
         <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
     </body>
 

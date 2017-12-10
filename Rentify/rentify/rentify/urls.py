@@ -23,7 +23,8 @@ urlpatterns = [
     url(r'^$', home),
     url(r'^admin/', admin.site.urls),
     url(r'^about/', about),
-    url(r'^cars/', cars),
-    url(r'^signup/', signup),
+    url(r'^cars/', ourCars),
+    url(r'^signup/', signUp),
+    url(r'^signin/', signIn),
     url(r'^rentProfile/(?P<username>\w+)/$', rentProfile ),
 ]

@@ -12,6 +12,7 @@ class User(AbstractUser):
         ('Other', 'Other'),
     )
     Gender = models.CharField(max_length=10, choices=GENDER, blank=True)
+    Profile = models.ImageField(blank=True, null=True)
 
 
 class Car(models.Model):

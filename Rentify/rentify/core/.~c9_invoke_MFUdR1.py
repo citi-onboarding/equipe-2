@@ -18,7 +18,7 @@ def ourCars (request):
     cars = Car.objects.filter(Availability=True)
     
     # Paginator
-    paginator = Paginator(cars, 9)
+    return render(request, 'core/ourCars.html', context)
     page = request.GET.get('page', 1)
     context["cars"] = paginator.page(page)
     print(context["cars"].has_other_pages)
@@ -30,18 +30,22 @@ def about (request):
     return render(request, 'core/about.html')
 
 
-def signIn (request):
+def signin (request):
+    print("To PEGANDO!!!!!!")
     if request.method == 'POST':
+        print("Verrrrrrrr")
         form = SignInForm(request.POST)
         if form.is_valid():
+            print("Testando se e valido")
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request,user)
-                return redirect('/')
+                redirect(home)
             else:
-                return redirect('/signin/')
+                login(request,user)
+                redirect(rentProfile)
                 
     else:
         form = SignInForm()
@@ -55,7 +59,8 @@ def signUp (request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            return redirect('/signin/')
+            login(request, user)
+            return redirect(home)
     else:
         form = SignUpForm()
     return render(request, 'core/register.html', {'form': form})
