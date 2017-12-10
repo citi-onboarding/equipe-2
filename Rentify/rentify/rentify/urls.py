@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^about/', about),
     url(r'^cars/', cars),
     url(r'^signup/', signup),
-    #url(r'^rentProfile/(?P<username>[a-zA-Z0-9]+)$', rentProfile, name=rentProfile),
+    url(r'^rentProfile/(?P<username>\w+)/$', rentProfile ),
 ]

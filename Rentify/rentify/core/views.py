@@ -33,13 +33,12 @@ def signup (request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            #user = authenticate(username=username, password=raw_password)
-            #login(request, user)
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
             return redirect(home)
     else:
         form = SignUpForm()
     return render(request, 'core/register.html', {'form': form})
-    #return render(request, 'core/register.html')
 
 
 @login_required(login_url='core/login.html')
