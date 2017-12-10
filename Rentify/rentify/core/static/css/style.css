@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+
+#navbar {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+}
+
+.navLinks {
+    float: right;
+}
+
+li{
+    list-style-type: none;
+    display: inline-block;
+}

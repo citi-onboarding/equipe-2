@@ -21,6 +21,7 @@ class Car(models.Model):
     Plate = models.CharField(primary_key=True, max_length=7)
     Date = models.DateField(auto_now_add=True)
     Availability = models.BooleanField()
+    Image = models.ImageField(blank=True, null=True)
     
     def __str__(self):
         return self.Model
