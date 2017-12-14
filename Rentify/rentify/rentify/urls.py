@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^signup/', signUp),
     url(r'^signin/', signIn),
     url(r'^rentProfile/(?P<username>\w+)/$', rentProfile ),
+    url(r'^tenantProfile/(?P<username>\w+)/$', tenantProfile),
 ]

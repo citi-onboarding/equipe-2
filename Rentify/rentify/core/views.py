@@ -21,7 +21,6 @@ def ourCars (request):
     paginator = Paginator(cars, 9)
     page = request.GET.get('page', 1)
     context["cars"] = paginator.page(page)
-    print(context["cars"].has_other_pages)
     
     return render(request, 'core/ourCars.html', context)
 
@@ -38,7 +37,7 @@ def signIn (request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request,user)
+                login(request, user)
                 return redirect('/')
             else:
                 return redirect('/signin/')
@@ -47,6 +46,7 @@ def signIn (request):
         form = SignInForm()
     return render(request, 'core/login.html', {'form': form})
 
+# ERROR ATRIBUTE USER HAS NO BACKEND
 def signUp (request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -55,7 +55,7 @@ def signUp (request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            return redirect('/signin/')
+            return redirect("/signin")
     else:
         form = SignUpForm()
     return render(request, 'core/register.html', {'form': form})
@@ -75,4 +75,9 @@ def rentProfile (request):
 
 @login_required(login_url='core/login.html')
 def tenantProfile (request):
-    pass
+    context = dict()
+    context["user"] = request.User
+    if Contract.objects.all() is not None:
+        context["cars"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract')[:6]
+        context["currentCar"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract').filter(Active=True).first()
+    return render(resquest, 'core/tenant-profile.html', context)
