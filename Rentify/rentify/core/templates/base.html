@@ -17,10 +17,16 @@
         <div class="navbar"> 
             <div class="logo"> Rentify </div>
             <ul class="navLinks">
-                <li><a href="">Our Cars</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Sign in</a></li>
-                <li><a href="">Sign up</a></li>
+                <li><a href="{% url 'cars' %}">Our Cars</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if not user %}
+                <li><a href="{% url 'signin' %}">Sign in</a></li>
+                <li><a href="{% url 'signup' %}">Sign up</a></li>
+                {% else %}
+                <li><a href="{% url 'rentProfile' %}">Profile</a></li>
+                <li><a href="{% url 'logout' %}">Exit</a></li>
+                {% endif %}
+                
             </ul>
         </div>
         

@@ -22,10 +22,11 @@ from core.views import *
 urlpatterns = [
     url(r'^$', home),
     url(r'^admin/', admin.site.urls),
-    url(r'^about/', about),
-    url(r'^cars/', ourCars),
-    url(r'^signup/', signUp),
-    url(r'^signin/', signIn),
-    url(r'^rentProfile/(?P<username>\w+)/$', rentProfile ),
-    url(r'^tenantProfile/(?P<username>\w+)/$', tenantProfile),
+    url(r'^about/', about, name="about"),
+    url(r'^cars/', ourCars, name="cars"),
+    url(r'^signup/', signUp, name="signup"),
+    url(r'^signin/', signIn, name="signin"),
+    url(r'^logout/', logoutUser, name='logout'),
+    url(r'^rentProfile/', rentProfile, name="rentProfile"),
+    url(r'^tenantProfile/', tenantProfile),
 ]

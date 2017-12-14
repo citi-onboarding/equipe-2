@@ -1,21 +1,33 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import *
 from .forms import *
 
+# Check user authentication
+def checkUser(request):
+    user = request.user
+    if user.is_authenticated():
+        if not(user.is_anonymous()):
+            return request.user
+    return False
+        
+
 # Create your views here.
 def home (request):
     context = dict()
     context["cars"] = Car.objects.filter(Availability=True)
+    context["user"] = checkUser(request)
+    
     return render(request, 'core/index.html', context)
 
 
 def ourCars (request):
     context = dict()
     cars = Car.objects.filter(Availability=True)
+    context["user"] = checkUser(request)
     
     # Paginator
     paginator = Paginator(cars, 9)
@@ -26,7 +38,9 @@ def ourCars (request):
 
 
 def about (request):
-    return render(request, 'core/about.html')
+    context = dict()
+    context["user"] = checkUser(request)
+    return render(request, 'core/about.html', context)
 
 
 def signIn (request):
@@ -43,10 +57,12 @@ def signIn (request):
                 return redirect('/signin/')
                 
     else:
-        form = SignInForm()
-    return render(request, 'core/login.html', {'form': form})
+        context = dict()
+        context["form"] = SignInForm()
+        context["user"] = checkUser(request)
+    return render(request, 'core/login.html', context)
 
-# ERROR ATRIBUTE USER HAS NO BACKEND
+
 def signUp (request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -61,23 +77,28 @@ def signUp (request):
     return render(request, 'core/register.html', {'form': form})
 
 
+def logoutUser(request):
+    logout(request)
+    return redirect('/')
+
 @login_required(login_url='core/login.html')
 def rentProfile (request):
     context = dict()
-    context["user"] = request.User
+    context["user"] = request.user
     
     if Contract.objects.all() is not None:
-        context["rents"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract')[:4]
-        context["currentRent"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract').filter(Active=True).first()
-    
-    return render(resquest, 'core/rent-profile.html', context)
+        context["rents"] = Contract.objects.filter(UserID=request.user).order_by('DateContract')[:4]
+        context["currentRent"] = Contract.objects.filter(UserID=request.user).order_by('DateContract').filter(Active=True).first()
+
+        
+    return render(request, 'core/rent-profile.html', context)
 
 
 @login_required(login_url='core/login.html')
 def tenantProfile (request):
     context = dict()
-    context["user"] = request.User
+    context["user"] = request.user
     if Contract.objects.all() is not None:
-        context["cars"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract')[:6]
-        context["currentCar"] = Contract.objects.filter(UserID=request.User.username).order_by('DateContract').filter(Active=True).first()
+        context["cars"] = Contract.objects.filter(UserID=request.user).order_by('DateContract')[:6]
+        context["currentCar"] = Contract.objects.filter(UserID=request.user).order_by('DateContract').filter(Active=True).first()
     return render(resquest, 'core/tenant-profile.html', context)
