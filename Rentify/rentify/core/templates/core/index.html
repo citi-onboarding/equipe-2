@@ -7,18 +7,20 @@
     <div class="topBanner">
         <img class="topImg" src="{% static 'img/car-travel.jpg' %}">
         <div class="sombreamento"></div>
-        <div class="topBannerText">
-            <div class="topText">
-                Rent a car!
+        <div class="topBannerContent">
+            <div class="topBannerText">
+                <div class="topText">
+                    Rent a car!
+                </div>
+                <div class="topText topText2">
+                    Lorem ipsum dolor sit amet, 
+                    <br>
+                    consectetur adipiscing elit.
+                </div>
             </div>
-            <div class="topText topText2">
-                Lorem ipsum dolor sit amet, 
-                <br>
-                consectetur adipiscing elit.
+            <div class="topBannerButton">
+                <button class="topButton"><a href="{% url 'cars' %}" class="topRentCar">Rent a car</a></button>
             </div>
-        </div>
-        <div class="topBannerButton">
-            <button class="topButton"><a href="{% url 'cars' %}" class="topRentCar">Rent a car</a></button>
         </div>
     </div>
     
@@ -29,9 +31,7 @@
                     <span class="car-info"> {{car.Model}}</span>
                     <span class="car-info"> License plate: {{car.Plate}}</span>
                     <span class="car-info"> Year: {{car.Year}}</span>
-                    <form method="POST">
-                        <button class="btn-orange">Rent</button>
-                    </form>
+                    <button class="btn-orange">Rent</button>
                 </div>
             </div>
         {% endfor %}

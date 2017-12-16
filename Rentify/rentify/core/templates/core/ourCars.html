@@ -3,31 +3,48 @@
 {% block title %} Rentify {% endblock %}
 {% block content %} 
 
-        {% for car in cars %}
-        <h1> {{ car }} </h1>
-        {% endfor %}
-        
-        
-        {% if cars.has_other_pages %}
-          <ul class="pagination">
-            {% if cars.has_previous %}
-              <li><a href="?page={{ cars.previous_page_number }}">&laquo;</a></li>
-            {% else %}
-              <li class="disabled"><span>&laquo;</span></li>
-            {% endif %}
-            {% for i in cars.paginator.page_range %}
-              {% if cars.number == i %}
-                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-              {% else %}
-                <li><a href="?page={{ i }}">{{ i }}</a></li>
-              {% endif %}
-            {% endfor %}
-            {% if cars.has_next %}
-              <li><a href="?page={{ cars.next_page_number }}">&raquo;</a></li>
-            {% else %}
-              <li class="disabled"><span>&raquo;</span></li>
-            {% endif %}
-          </ul>
+<div class="gray-bar">
+  <img class="gray-bar-image" src="{% static 'icons/car-front.svg' %}" aria-hidden="True"> </img>
+  <h2 class="gray-bar-text" > Our cars </h2>
+</div>
+
+<section class=ourCars>
+  <h2>Choose your car</h2>
+  <div>
+    <section class="our-cars">
+      {% for car in cars %}
+              <div class="car-card for-rent">
+                  <div class="filter-card">
+                      <span class="car-info"> {{car.Model}}</span>
+                      <span class="car-info"> License plate: {{car.Plate}}</span>
+                      <span class="car-info"> Year: {{car.Year}}</span>
+                      <button class="btn-orange">Rent</button>
+                  </div>
+              </div>
+          {% endfor %}
+    </section>
+  <section class=pagination>
+    {% if cars.has_other_pages %}
+      <ul class="pagination">
+      {% if cars.has_previous %}
+        <li><a href="?page={{ cars.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+      {% endif %}
+      {% for i in cars.paginator.page_range %}
+        {% if cars.number == i %}
+          <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
         {% endif %}
-        
+      {% endfor %}
+      {% if cars.has_next %}
+        <li><a href="?page={{ cars.next_page_number }}">&raquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
+      {% endif %}
+      </ul>
+    {% endif %}
+  </section>
+</section>
 {% endblock %}
