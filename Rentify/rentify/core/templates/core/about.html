@@ -51,36 +51,29 @@
             </div>
             
     </div>
-   
-  
-    
-
+ 
     
     <div class="icons">
         
         <figure class="icon-1" >
             <img class="car-icon" src="{% static 'icons/car-front.svg' %}" aria-hidden="True"></img>
-            <figurecaption class="icon-text">
-                <h2 class="icon-title">The best cars</h2>
+            <figurecaption class="icon-title">
+                <h2 class="">The best cars</h2>
                 <p class="icon-graph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum 
                 et pretium nisl. Mauris pellentesque elit in purus laoreet bibendum. In 
                 hac habitasse platea dictumst. Sed commodo nisi a ullamcorper suscipit. 
-                Nam et libero lacinia, dapibus risus eu, ornare felis. Cras auctor mi 
-                olutpat ligula porta rhoncus.
-                Ut commodo ex sollicitudin, vehicula sapien id, lacinia mauris.</p>
+                </p>
             </figurecaption>
         </figure>
         
         <figure class="icon-2">
             <img class="tow-icon" src="{% static 'icons/car-breakdown.svg' %}" aria-hidden="True"></img>
             <figurecaption class="icon-title">
-                <h2 class="icon-title">Technical support 24/7</h2> 
+                <h2 class="">Technical support 24/7</h2> 
                 <p class="icon-graph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum 
                 et pretium nisl. Mauris pellentesque elit in purus laoreet bibendum. In 
                 hac habitasse platea dictumst. Sed commodo nisi a ullamcorper suscipit. 
-                Nam et libero lacinia, dapibus risus eu, ornare felis. Cras auctor mi 
-                olutpat ligula porta rhoncus.
-                Ut commodo ex sollicitudin, vehicula sapien id, lacinia mauris.</p>
+                </p>
                 </figurecaption>
             
         </figure>
@@ -88,18 +81,12 @@
         <figure class="icon-3">
             <img class="pump-icon" src="{% static 'icons/fuel-station-pump.svg' %}" aria-hidden="True"></img>
             <figurecaption class="icon-title">
-                <h2 class="icon-title">Best efficiency</h2>
+                <h2 class="">Best efficiency</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum 
                 et pretium nisl. Mauris pellentesque elit in purus laoreet bibendum. In 
                 hac habitasse platea dictumst. Sed commodo nisi a ullamcorper suscipit. 
-                Nam et libero lacinia, dapibus risus eu, ornare felis. Cras auctor mi 
-                olutpat ligula porta rhoncus.
-                Ut commodo ex sollicitudin, vehicula sapien id, lacinia mauris.
-                    
                 </p>
-                
-                
             </figurecaption>
             
             
@@ -114,6 +101,13 @@
         
         
         
+    </div>
+    
+    <div class="bottomBanner">
+        <img class="bottomImg" src="{% static 'img/be-free.jpeg' %}">
+        <div class="sombreamento"></div>
+        <div class="bottomText">Be free!</div>
+        <button class="bottomButton"><a href="{% url 'cars' %}" class="rentCar">Rent a car</a></button>
     </div>
 
 {% endblock %}

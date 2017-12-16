@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Sign In</h2>
-  <form method="POST">
+<div class="login">
+  <h2>Rentify</h2>
+  <div>
+    <h6>Access your account</h6>
+    <form method="POST">
     {% csrf_token %}
     {% for field in form %}
       <p>
@@ -13,6 +16,9 @@
         {% endfor %}
       </p>
     {% endfor %}
+    <a href="" id="esqpass">Forgot your password?</a>
     <button type="submit">Sign in</button>
   </form>
+  </div>
+  </div>
 {% endblock %}

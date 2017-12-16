@@ -2,13 +2,48 @@
 {% load staticfiles %}
 {% block title %} Rentify {% endblock %}
 
-{% block content %} 
-    {% for car in cars %}
-	    <h3>Model: {{car.Model}}</h3>
-	    <h3>Price: {{car.Price}}</h3>
-	    <h3>Year: {{car.Year}}</h3>
-    {% endfor %}
+{% block content %}
+    
+    <div class="topBanner">
+        <img class="topImg" src="{% static 'img/car-travel.jpg' %}">
+        <div class="sombreamento"></div>
+        <div class="topBannerText">
+            <div class="topText">
+                Rent a car!
+            </div>
+            <div class="topText topText2">
+                Lorem ipsum dolor sit amet, 
+                <br>
+                consectetur adipiscing elit.
+            </div>
+        </div>
+        <div class="topBannerButton">
+            <button class="topButton"><a href="{% url 'cars' %}" class="topRentCar">Rent a car</a></button>
+        </div>
+    </div>
+    
+    <section class="home-cars">
+        {% for car in cars %}
+            <div class="car-card for-rent">
+                <div class="filter-card">
+                    <span class="car-info"> {{car.Model}}</span>
+                    <span class="car-info"> License plate: {{car.Plate}}</span>
+                    <span class="car-info"> Year: {{car.Year}}</span>
+                    <form method="POST">
+                        <button class="btn-orange">Rent</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    
+    
+    
+    
     <div class="bottomBanner">
-        <img class="bottomImg" src="{% static 'img/be-free.jpeg' %}"> Be free! </img>        
+        <img class="bottomImg" src="{% static 'img/be-free.jpeg' %}">
+        <div class="sombreamento"></div>
+        <div class="bottomText">Be free!</div>
+        <button class="bottomButton"><a href="{% url 'cars' %}" class="rentCar">Rent a car</a></button>
     </div>
 {% endblock %}

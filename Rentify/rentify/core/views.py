@@ -18,7 +18,7 @@ def checkUser(request):
 # Create your views here.
 def home (request):
     context = dict()
-    context["cars"] = Car.objects.filter(Availability=True)
+    context["cars"] = Car.objects.filter(Availability=True)[:6]
     context["user"] = checkUser(request)
     
     return render(request, 'core/index.html', context)
@@ -59,11 +59,14 @@ def signIn (request):
     else:
         context = dict()
         context["form"] = SignInForm()
-        context["user"] = checkUser(request)
+    context["user"] = checkUser(request)
+    
     return render(request, 'core/login.html', context)
 
 
 def signUp (request):
+    context = dict()
+    
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -73,8 +76,10 @@ def signUp (request):
             user = authenticate(username=username, password=password)
             return redirect("/signin")
     else:
-        form = SignUpForm()
-    return render(request, 'core/register.html', {'form': form})
+        context["form"] = SignUpForm()
+    
+    context["user"] = checkUser(request)
+    return render(request, 'core/register.html', context)
 
 
 def logoutUser(request):
@@ -98,7 +103,9 @@ def rentProfile (request):
 def tenantProfile (request):
     context = dict()
     context["user"] = request.user
+    
     if Contract.objects.all() is not None:
         context["cars"] = Contract.objects.filter(UserID=request.user).order_by('DateContract')[:6]
         context["currentCar"] = Contract.objects.filter(UserID=request.user).order_by('DateContract').filter(Active=True).first()
-    return render(resquest, 'core/tenant-profile.html', context)
+    
+    return render(request, 'core/tenant-profile.html', context)

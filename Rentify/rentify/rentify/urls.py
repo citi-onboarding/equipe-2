@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 from core.views import *
 
 
 urlpatterns = [
-    url(r'^$', home),
+    url(r'^$', home, name="home"),
     url(r'^admin/', admin.site.urls),
     url(r'^about/', about, name="about"),
     url(r'^cars/', ourCars, name="cars"),
@@ -28,5 +30,5 @@ urlpatterns = [
     url(r'^signin/', signIn, name="signin"),
     url(r'^logout/', logoutUser, name='logout'),
     url(r'^rentProfile/', rentProfile, name="rentProfile"),
-    url(r'^tenantProfile/', tenantProfile),
-]
+    url(r'^tenantProfile/', tenantProfile, name="tenantProfile"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
