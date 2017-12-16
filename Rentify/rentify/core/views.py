@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib import messages
 from .models import *
 from .forms import *
 
@@ -73,14 +74,15 @@ def signUp (request):
             form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
+            # new_user = User.objects.create_user(**form.cleaned_data)
+            # login(new_user)
             user = authenticate(username=username, password=password)
-            return redirect("/signin")
+            messages.success(request, 'Account created successfully')
+            return redirect(home)
     else:
-        context["form"] = SignUpForm()
-    
-    context["user"] = checkUser(request)
-    return render(request, 'core/register.html', context)
-
+        form = SignUpForm()
+        
+    return render(request, 'core/register.html', {'form': form})
 
 def logoutUser(request):
     logout(request)

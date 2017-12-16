@@ -16,7 +16,7 @@
         
     <body>
         <div class="navbar" id="myTopnav"> 
-            <a href="javascript:void(0);" class="navIcon" onclick="myFunction()">&#9776;</a>
+            <a id="navToggle" class="navIcon">&#9776;</a>
             <div class="logo"> 
                 <a href="{% url 'home' %}"><img class="navImgLogo" src="{% static 'img/RentifyBranca.png' %}"></img></a>
             </div>
@@ -30,7 +30,6 @@
                 <li><a href="{% url 'rentProfile' %}">Profile</a></li>
                 <li><a href="{% url 'logout' %}">Exit</a></li>
                 {% endif %}
-                
             </ul>
         </div>
         
@@ -59,6 +58,7 @@
             </div>
         </footer>
         <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
     </body>
 
 </html>

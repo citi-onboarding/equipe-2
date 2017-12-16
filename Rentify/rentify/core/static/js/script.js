@@ -1,14 +1,18 @@
 /*              NAVBAR              */
+/*global $*/
 $(document).ready(function() {
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "navbar") {
-        x.className += " responsive";
-    } else {
-        x.className = "navbar";
+    function alertfunc(){
+        alert("ola")
     }
-}
     $(".btn-orange").click(function (){
         $("#modal").removeClass("not");
     });
+    
+    $("#navToggle").click(function (){
+        if($("#myTopnav").hasClass("navbar responsive")) {
+            $("#myTopnav").removeClass("navbar responsive").addClass("navbar");
+        } else {
+            $("#myTopnav").addClass(" responsive")
+        }
+    })
 });

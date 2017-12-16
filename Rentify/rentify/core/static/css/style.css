@@ -2,9 +2,6 @@
     margin: 0;
     padding: 0;
 }
-button {
-    outline:0;
-}
 
 
 /*                    NAVBAR                    */
@@ -53,6 +50,7 @@ li a {
     text-decoration:none;
     color:white;
     display:none;
+    cursor: pointer;
 }
 
 @media (max-width: 170vh) {
@@ -190,27 +188,8 @@ footer {
 .topBanner {
     position:relative;
     display:flex;
-    justify-content:space-around;
-    height: 410px;
-}
-.topBannerText {
-    width:50%;
-    display:flex;
-    flex-direction:column;
     justify-content:center;
-    align-items:flex-start;
-    position:absolute;
-    left:32%;
-    top:32%;
-}
-.topBannerButton {
-    width:30%;
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    position:absolute;
-    left:60%;
-    top:51%;
+    height: 410px;
 }
 .topImg {
     width:100%;
@@ -218,19 +197,32 @@ footer {
     object-position:center;
     z-index:0;
 }
+.topBannerText {
+    width:40%;
+}
 .topText {
+    position:absolute;
+    top:28%;
     color: white;
     font-size: 40px;
     font-family:Open Sans;
     text-align: left;
+    width:40%;
     z-index:2;
+    left:30%;
 }
 .topText2 {
-    font-size:25px;
-    padding: 10px 0 0 0;
+    top:46%;
+    font-size:30px;
+}
+.topBannerButton {
+    width:30%;
 }
 .topButton {
+    position:absolute;
     cursor:pointer;
+    top:52%;
+    left:62%;
     width:140px;
     height: 50px;
     border-radius:100px;
@@ -250,18 +242,16 @@ footer {
     font-family:Open Sans;
     font-size:20px;
 }
-@media screen and (max-width: 1200px) {
-    .topBannerText {
-        top:15%;
+
+@media (max-width: 1200px) {
+    .topButton {
+        top:70%;
+    }
+    .topText {
         width:100%;
-        align-items:center;
         left:0;
     }
-    .topBannerButton {
-        top:55%;
-        width:150px;
-    }
-} 
+}
 
 
 /*                    BOTTOM BANNER                    */
@@ -305,7 +295,7 @@ footer {
 }
 .sombreamento {
     position:absolute;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.3);
     width: 100%;
     height: 100%;
     z-index:1;
@@ -318,7 +308,7 @@ footer {
     font-size:16px;
 }
 
-
+/*                    ABOUT                  */
 .gray-bar {
     width: 100%; 
     background-color: #c0c0c0;
@@ -415,6 +405,53 @@ footer {
     }
 } 
 
+/*                    TenantProfile                    */
+
+.profiles{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap:wrap;
+    
+}
+.photos{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-photo{
+    width:150px;
+    min-width:80px;
+    border-radius: 100%;
+    margin:20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*                    LOGIN                    */
 
@@ -466,8 +503,6 @@ footer {
     border:none;
     background-color:#FF6700;
     border-radius:1vh;
-    color:#FFFFFF;
-    cursor: pointer;
 }
 
 .login > div > form > p >label{
@@ -488,124 +523,110 @@ footer {
 
 /*    Modais    */
 
-.notlog{
-    display: block;
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top:0;
-    margin:0;
-    background-color: rgba(0,0,0,.8);
-    z-index: 100;
-    font-family: 'Open sans';
-}
-.notlog > div{
-    display:flex;
-    position: fixed;
-    left:32.5%;
-    top:20%;
-    background-color:#FFFFFF;
-    align-items:center;
-    justify-content:center;
-    flex-wrap: wrap;
-    width: 35%;
-    border:1px solid #c0c0c0;
-    text-align: center;
-}
-.notlog > div > p{
-    font-size: 4.5vh;
-    margin:5vw;
-    color:#383d3b;
-}
-.notlog > div > a{
-    font-size: 2vh;
-    margin-top:5%;
-    margin-bottom:10%;
-    color:#c0c0c0;
-    text-decoration:none;
-}
-.redirect{
-    border: none;
-    width: 54%;
-    border-radius:1vh;
-    height: 5vh;
-    margin-right:20%;
-    margin-left:20%;
-    margin-bottom: 5vw;
-}
-.redirect >button{
-    background-color:#FF6700;
-    border: none;
-    width: 100%;
-    height: 5vh;
-    border-radius:1vh;
-    color:#FFFFFF;
-    font-size: 2vh;
-    cursor: pointer;
-    text-decoration: none;
-}
-
 .placed{
-    display: block;
-    width: 100%;
-    height: 100vh;
-    margin:0;
+    width:100%;
+    height:100vh;
+    display:flex;
     position:fixed;
     top:0;
     background-color: rgba(0,0,0,0.8);
-    z-index: 100;
+    z-index:10;
     font-family: 'Open sans';
+    color:#c0c0c0;
 }
 .placed > div{
+    width:35%;
     display:flex;
-    position: fixed;
-    left:32.5%;
+    position:fixed;
     top:20%;
-    background-color:#FFFFFF;
-    align-items:center;
+    left:32.5%;
+    background-color: #FFFFFF;
     justify-content:center;
-    flex-wrap: wrap;
-    width: 35%;
+    align-items:center;
     border:1px solid #c0c0c0;
-    text-align: center;
+    flex-wrap:wrap;
 }
-.placed > div > p{
-    font-size: 5vh;
-    margin:5vw;
-    color:#383d3b;
+.placed > div >p{
+    font-size:4vh;
+    text-align: center;
+    margin:7vh;
 }
 .placed > div > a{
-    border: none;
-    width: 54%;
-    border-radius:1vh;
-    height: 5vh;
-    margin-right:20%;
-    margin-left:20%;
-    margin-bottom: 5vw;
+    height:5vh;
+    width:70%;
+    margin-bottom:7vh;
 }
 .placed > div > a > button{
-    background-color:#FF6700;
-    border: none;
-    width: 100%;
-    height: 5vh;
-    border-radius:1vh;
+    background-color: #FF6700;
+    border:none;
+    height:5vh;
+    width:100%;
     color:#FFFFFF;
-    font-size: 2vh;
+    border-radius:1vh;
     cursor: pointer;
-    text-decoration: none;
 }
-@media(max-width: 100vh) {
+.notlog{
+    width:100%;
+    height:100vh;
+    display:flex;
+    position:fixed;
+    top:0;
+    background-color: rgba(0,0,0,0.8);
+    z-index:10;
+    font-family: 'Open sans';
+    color:#c0c0c0;
+}
+.notlog > div{
+    width:35%;
+    display:flex;
+    position:fixed;
+    top:20%;
+    left:32.5%;
+    background-color: #FFFFFF;
+    justify-content:center;
+    align-items:center;
+    border:1px solid #c0c0c0;
+    flex-wrap:wrap;
+}
+.notlog > div >p{
+    font-size:4vh;
+    text-align: center;
+    margin:7vh;
+}
+.notlog > div > a{
+    height:5vh;
+    width:70%;
+}
+.notlog > div > a > button{
+    background-color: #FF6700;
+    border:none;
+    height:5vh;
+    width:100%;
+    color:#FFFFFF;
+    border-radius:1vh;
+    cursor: pointer;
+}
+#notcont{
+    text-decoration:none;
+    text-align:center;
+    color:#c0c0c0;
+    margin:0;
+    font-size:1.5vh;
+    margin:4vh;
+}
+
+.not{
+    display:none;
+}
+@media (max-width: 100vh){
     .notlog > div{
-        width: 90%;
+        width:90%;
         left:5%;
     }
     .placed > div{
-        width: 90%;
+        width:90%;
         left:5%;
     }
-}
-.not{
-    display:none;
 }
 
 
@@ -763,7 +784,6 @@ footer {
     margin-bottom:5%;
     border:none;
     height: 5vh;
-    border:none;
     background-color:#FF6700;
     border-radius:1vh;
 }
