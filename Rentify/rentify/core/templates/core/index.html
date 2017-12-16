@@ -35,7 +35,24 @@
                 </div>
             </div>
         {% endfor %}
+        
     </section>
+    {% if user.is_authenticated %}
+    <div class="placed not" id="modal">
+        <div>
+            <p>Your order is placed! Check your profile.</p>
+            <a href="\rentProfile"><button>Profile</button></a>
+        </div>
+    </div>
+    {% else %}
+    <div class="notlog not" id="modal">
+        <div>
+            <p>Wait! To rent a car, you must be logged in.</p>
+            <a class="redirect" href="\signin"><button>Sign in</button></a>
+            <a href="\signup">Don't have an account yet? Click here.</a>
+        </div>
+    </div>
+    {% endif %}
     
     
     
